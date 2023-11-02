@@ -1,0 +1,32 @@
+
+
+{% block content %}
+    <h1>Recherche de livres par Référence</h1>
+    <form action="{{ path('app_searchBookByRef') }}" method="get">
+        <input type="text" name="search" placeholder="Rechercher par Référence">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <h2>Résultats de la recherche</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Référence</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <!-- Ajoutez d'autres colonnes au besoin -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.username }}</td>
+                    <!-- Ajoutez d'autres colonnes au besoin -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_AfficheBook') }}">Retour à la liste des livres</a>
+{% endblock %}

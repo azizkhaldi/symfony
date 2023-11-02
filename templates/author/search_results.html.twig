@@ -1,0 +1,29 @@
+{# templates/author/search_results.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la Recherche{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la Recherche</h1>
+
+    {% if authors is empty %}
+        <p>Aucun auteur trouvé pour la recherche spécifiée.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom d'Auteur</th>
+                    <th>Nombre de Livres</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                    <tr>
+                        <td>{{ author.username }}</td>
+                        <td>{{ author.nb_books }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>

@@ -1,0 +1,29 @@
+{# templates/book/books_published_between_dates.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livres publiés entre deux dates{% endblock %}
+
+{% block body %}
+    <h1>Liste des livres publiés entre deux dates</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Date de Publication</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.username }}</td>
+                    <td>{{ book.publicationDate|date('d/m/Y') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_AfficheBook') }}">Retour à la liste des livres</a>
+{% endblock %}
